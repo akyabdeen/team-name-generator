@@ -1,0 +1,155 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; 
+}
+
+.page {
+    font-size: 36px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.landing-card, .team-generator-card {
+    background-color: #4A628A;
+    color: #fff;
+    border-radius: 15px;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: fit-content;
+    width: 900px; /* Fixed width */
+    min-height: 500px; /* Fixed minimum height */
+    margin: 0 10%;
+}
+
+.team-generator-card {
+    background-color: #7AB2D3;
+}
+
+.keyword-input {
+    padding: 10px;
+    border-radius: 15px;
+    border: 0.5px solid #4A628A;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.input-button {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+h1 {
+    margin: 20px 0px;
+}
+
+.random-generation-label {
+    font-size: 16px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.left-side {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.right-side {
+    grid-column: 3 / span 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+    border-left: 2px solid #fff;
+}
+
+.generated-names {
+    list-style: none;
+    width: auto;
+}
+
+.generated-names li {
+    
+}
+
+.generated-names li:hover {
+    background-color: #DFF2EB;
+    color: #fff;
+    cursor: pointer;
+}
+
+.description {
+    font-size: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.btn, .generate-btn {
+    background-color: #7AB2D3; 
+    color: #fff;  
+    font-size: 16px; 
+    padding: 12px 24px; 
+    border: none; 
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 2px;
+    transition: all 0.3s ease; 
+  }
+
+.btn:hover, .generate-btn:hover { 
+    background-color: #4A628A;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.btn:focus, .generate-btn:focus {
+    outline: none;
+}
+
+.btn {
+    background-color: #4A628A;
+}
+
+.btn:hover {
+    background-color: #7AB2D3;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
