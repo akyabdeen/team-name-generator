@@ -33,7 +33,7 @@ export default function TeamGenerator({ handleLike }) {
         const randomAdjectiveName = ADJECTIVES[Math.floor(Math.random() * ADJECTIVES.length)] + ' ' + word; // this generates a random adjective from the ADJECTIVES array and combines it with the word
         const randomMovieTitleName = MOVIES[Math.floor(Math.random() * MOVIES.length)].replace('$', word); // this generates a random movie title from the MOVIES array and replaces the placeholder with the word
         const randomPrefixName = PREFIXES[Math.floor(Math.random() * PREFIXES.length)] + ' ' + word; // this generates a random prefix from the PREFIXES array and combines it with the word
-        const randomVowelName = userInput
+        const randomVowelName = word
         .replace(/[aeiou]/g, VOWELS[Math.floor(Math.random() * VOWELS.length)])
         .replace(/^./, (match) => match.toUpperCase()); // this replaces all the vowels in the word with a random vowel from the VOWELS array and capitalizes the first letter
 
