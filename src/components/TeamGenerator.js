@@ -30,19 +30,21 @@ export default function TeamGenerator({ handleLike }) {
 
     // this function is to generate the names based on the word provided in the parameter
     const generate = (word) => {
-        const randomAdjectiveName = ADJECTIVES[Math.floor(Math.random() * ADJECTIVES.length)] + ' ' + word;
-        const randomMovieTitleName = MOVIES[Math.floor(Math.random() * MOVIES.length)].replace('$', word);
-        const randomPrefixName = PREFIXES[Math.floor(Math.random() * PREFIXES.length)] + ' ' + word;
-        const randomVowelName = userInput.replace(/[aeiou]/gi, VOWELS[Math.floor(Math.random() * VOWELS.length)]);
+        const randomAdjectiveName = ADJECTIVES[Math.floor(Math.random() * ADJECTIVES.length)] + ' ' + word; // this generates a random adjective from the ADJECTIVES array and combines it with the word
+        const randomMovieTitleName = MOVIES[Math.floor(Math.random() * MOVIES.length)].replace('$', word); // this generates a random movie title from the MOVIES array and replaces the placeholder with the word
+        const randomPrefixName = PREFIXES[Math.floor(Math.random() * PREFIXES.length)] + ' ' + word; // this generates a random prefix from the PREFIXES array and combines it with the word
+        const randomVowelName = userInput
+        .replace(/[aeiou]/g, VOWELS[Math.floor(Math.random() * VOWELS.length)])
+        .replace(/^./, (match) => match.toUpperCase()); // this replaces all the vowels in the word with a random vowel from the VOWELS array and capitalizes the first letter
 
         const lastLetter = word[word.length - 1];
 
         var randomSuffixName = '';
 
         if (VOWELS.includes(lastLetter)) {
-            randomSuffixName = word + VOWELSUFFIXES[Math.floor(Math.random() * VOWELSUFFIXES.length)];
+            randomSuffixName = word + VOWELSUFFIXES[Math.floor(Math.random() * VOWELSUFFIXES.length)]; // this generates a random suffix from the VOWELSUFFIXES array and combines it with the word
         } else {
-            randomSuffixName = word + CONSONANTSUFFIXES[Math.floor(Math.random() * CONSONANTSUFFIXES.length)];
+            randomSuffixName = word + CONSONANTSUFFIXES[Math.floor(Math.random() * CONSONANTSUFFIXES.length)]; // this generates a random suffix from the CONSONANTSUFFIXES array and combines it with the word
         }
 
         setGeneratedNames([randomAdjectiveName, randomMovieTitleName, randomPrefixName, randomVowelName, randomSuffixName]);
