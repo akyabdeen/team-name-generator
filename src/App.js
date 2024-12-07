@@ -33,15 +33,24 @@ function App() {
 
   return (
     <div className="App">
-        <div className='liked-names-container'>
-            <span className='show-names' onClick={toggleShowLikesNames}>
-                {!showLikedNames ? "Show" : "Hide"} Liked Names
-            </span>
+        {/* this button toggles the visibility of the liked names for mobile view */}
+        <button className="show-names-btn" onClick={toggleShowLikesNames}>
+           { !showLikedNames ? "Show Liked Names" : "Hide Liked Names" }
+        </button>
+        <div className={`liked-names-container ${showLikedNames ? 'show' : ''}`}>
+            <div className="liked-names-header">
+                <span className='show-names' onClick={toggleShowLikesNames}>
+                    {!showLikedNames ? "Show" : "Hide"} Liked Names
+                </span>
+            </div>
             {
                 // this conditionally renders the liked names list based on the showLikedNames state
                 showLikedNames && (
                     <ul className='liked-names'>
                         {/* this maps through the likedNames array and displays the names in a list */}
+                        {likedNames.length === 0 && (
+                            <p>Too empty! Start generating some names to add some to your list.</p>
+                        )}
                         {likedNames.map((name, index) => (
                             <li key={index}>
                                 {name}

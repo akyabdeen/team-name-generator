@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     height: 100%;
 }
 
@@ -16,9 +16,30 @@ html, body {
 
 .liked-names-container {
     grid-column: 1 / 1;
-    margin: 30px;
-    margin-right: 0;
+    padding: 30px;
     font-size: 20px;
+    max-height: 100%;
+    max-width: 100%;
+    overflow-y: auto;
+}
+
+.liked-names-container::-webkit-scrollbar {
+    width: 8px; 
+}
+
+.liked-names-container::-webkit-scrollbar-track {
+    background: #fff; 
+    border-radius: 10px;
+}
+
+.liked-names-container::-webkit-scrollbar-thumb {
+    background-color: #7AB2D3;
+    border-radius: 10px;
+    border: 2px solid #f0f0f0;
+}
+
+.liked-names-container::-webkit-scrollbar-thumb:hover {
+    background-color: #4A628A; 
 }
 
 .show-names {
@@ -28,6 +49,10 @@ html, body {
 .show-names:hover {
     color: #4A628A;
     font-weight: bold;
+}
+
+.show-names-btn {
+    display: none;
 }
 
 .liked-names {
@@ -58,7 +83,6 @@ html, body {
     grid-template-rows: repeat(2, auto);
     gap: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: fit-content;
     width: 900px;
     min-height: 500px;
     text-align: center;
@@ -187,6 +211,10 @@ h1 {
     animation: fadeOut 0.3s ease-in-out forwards;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -213,5 +241,126 @@ h1 {
     100% {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .App {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 10px;
+    }
+
+    .show-names-btn {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1100; 
+        background-color: #4A628A;
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 24px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease;
+    }
+
+    .show-names-btn:hover {
+        background-color: #7AB2D3;
+    }
+
+    .liked-names-container {
+        grid-column: 1 / -1;
+        padding: 15px;
+        font-size: 16px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        z-index: 1000;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+        pointer-events: none; 
+    }
+
+    .liked-names-container.show {
+        transform: translateY(0);
+        pointer-events: auto; 
+    }
+
+    .liked-names-container::-webkit-scrollbar {
+        width: 6px; 
+    }
+
+    .liked-names-container::-webkit-scrollbar-thumb {
+        background-color: #7AB2D3;
+        border-radius: 6px;
+    }
+
+    .main-card {
+        grid-column: 1 / -1;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .landing-card, .team-generator-card {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        flex-shrink: 0;
+        min-height: auto;
+        box-sizing: border-box;
+        gap: 20px;
+    }
+
+    .left-side, .right-side {
+        width: 100%;
+        border: none; 
+    }
+
+    h1 {
+        font-size: 24px; 
+        word-wrap: break-word; 
+        text-align: center; 
+    }
+
+    .description {
+        font-size: 20px; 
+        text-align: center;
+    }
+
+    .btn, .generate-btn {
+        width: 100%;
+        padding: 14px 0;
+        font-size: 16px;
+    }
+
+    .liked-names-header .show-names {
+        display: none;
+    }
+
+    .liked-names-container {
+        padding: 20px;
+    }
+
+    .generated-names {
+        width: 100%;
+        padding: 0;
+        margin-top: 0;
+    }
+
+    .generated-names li {
+        flex-direction: row;
+        font-size: 16px;
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
     }
 }

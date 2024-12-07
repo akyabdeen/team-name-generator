@@ -15,10 +15,13 @@ export default function TeamGenerator({ handleLike }) {
 
     // this function is to change the value of the user input as they are typing and also to remove the warning message if the user input becomes sufficient
     const handleChange = (e) => {
-        setUserInput(e.target.value);
+        if (e.target.value?.length < 20) {
+            setUserInput(e.target.value); // limit the input to 20 characters to minimize the ways through which the user can break the app
+        }
         if (e.target.value?.length > 2 && !userInputSufficient) {
             setUserInputSufficient(true);
         }
+
     }
 
     // this function is to set the selected keyword from the autocomplete
