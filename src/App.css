@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    /*overflow: hidden;*/
+    overflow-x: hidden;
     height: 100%;
 }
 
@@ -84,6 +84,7 @@ html, body {
     gap: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     width: 900px;
+    max-width: 100%;
     min-height: 500px;
     text-align: center;
 }
@@ -139,6 +140,10 @@ h1 {
 .generated-names {
     list-style: none;
     width: auto;
+    font-size: 30px;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .generated-names li:hover {
@@ -326,6 +331,10 @@ h1 {
         border: none; 
     }
 
+    .right-side > * {
+        width: 100%;
+    }
+
     h1 {
         font-size: 24px; 
         word-wrap: break-word; 
@@ -333,6 +342,7 @@ h1 {
     }
 
     .description {
+        width: 100%;
         font-size: 20px; 
         text-align: center;
     }
@@ -353,13 +363,14 @@ h1 {
 
     .generated-names {
         width: 100%;
+        text-align: center;
         padding: 0;
-        margin-top: 0;
+        margin: 0;
     }
 
     .generated-names li {
         flex-direction: row;
-        font-size: 16px;
+        font-size: 20px;
         padding: 10px 0;
         border-bottom: 1px solid #ccc;
     }

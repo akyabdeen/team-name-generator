@@ -15,10 +15,14 @@ export default function TeamGenerator({ handleLike }) {
 
     // this function is to change the value of the user input as they are typing and also to remove the warning message if the user input becomes sufficient
     const handleChange = (e) => {
-        if (e.target.value?.length < 20) {
-            setUserInput(e.target.value); // limit the input to 20 characters to minimize the ways through which the user can break the app
+        const value = e.target.value;
+
+        const alphaVal = value.replace(/[^a-zA-Z ]/g, ''); // this removes any non-alphabetic characters from the input
+
+        if (alphaVal?.length < 15) {
+            setUserInput(e.target.value); // limit the input to 15 characters to minimize the ways through which the user can break the app
         }
-        if (e.target.value?.length > 2 && !userInputSufficient) {
+        if (alphaVal?.length > 2 && !userInputSufficient) {
             setUserInputSufficient(true);
         }
 
@@ -94,7 +98,7 @@ export default function TeamGenerator({ handleLike }) {
                         {!userInputSufficient && (
                             <p className="warning">Your keyword should have more than two characters!</p>
                         )}
-                        <button className="generate-btn" onClick={handleGenerate}>Generate</button>
+                        <button className="generate-btn" onClick={handleGenerate} disabled={userInput.length < 1}>Generate</button>
                     </div>
                     <p className="random-generation-label">Don't feel like it?</p>
                     <button className="generate-btn" onClick={handleGenerateRandom}>Generate Randomly</button>
